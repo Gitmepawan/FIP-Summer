@@ -3,6 +3,9 @@
 # FINAL-INTEGRATED-PROJECT
 
 ![image](https://user-images.githubusercontent.com/97752074/173161311-5333840e-586d-4951-9cfe-327cb7423143.png)
+![image](https://user-images.githubusercontent.com/97752074/173161449-78030fb5-0f88-4ea0-866e-191221b640ce.png)
+![image](https://user-images.githubusercontent.com/97752074/173161500-ff0a3471-106d-4d10-8ccc-7cf4b1b91f03.png)
+
 
 # Assignment Overview
 The Midterm assignment is based on the Final Integrated Project (FIP). Each course this semester
