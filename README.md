@@ -1,20 +1,23 @@
 # FIP-Summer
+
 # FINAL-INTEGRATED-PROJECT
 
+![image](https://user-images.githubusercontent.com/97752074/173161311-5333840e-586d-4951-9cfe-327cb7423143.png)
+
+# Assignment Overview
+The Midterm assignment is based on the Final Integrated Project (FIP). Each course this semester
+will require students to create certain criteria for their FIP and submit it by the midpoint (Midterm) of
+the semester. The goal of the Midterm is to aid students in creating, developing and finishing a
+successful FIP project at the end of the semester.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+# Assignment Requirements
+Create a well-written readme for your FIP.
+Follow best practices RE workflow FROM THE BEGINNING of the project - branches, pull
+requests, commits etc.
+NEVER work directly on the main branch - you should have at least 3 for the midterm (main branch
+and a working branch with commits per team member)
+If you have any further questions, please email your instructor. Ask questions in class!
 
 # About Orbitz drink.
 Orbitz was a noncarbonated fruit-flavored beverage product made by The Clearly Food & Beverage Company of Canada, makers of Clearly Canadian. 
