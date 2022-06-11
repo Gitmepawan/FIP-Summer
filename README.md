@@ -2,7 +2,7 @@
 Its an responsive layout
 FIP-Summer
 # FINAL-INTEGRATED-PROJECT
-image image image
+<img src="images/orbitz.jpg" alt="">
 
 # Assignment Overview
 The Midterm assignment is based on the Final Integrated Project (FIP). Each course this semester will require students to create certain criteria for their FIP and submit it by the midpoint (Midterm) of the semester. The goal of the Midterm is to aid students in creating, developing and finishing a successful FIP project at the end of the semester.
