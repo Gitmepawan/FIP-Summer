@@ -1,0 +1,637 @@
+body {
+	margin: 0;
+	padding: 0;
+	color: #626262;
+	font-family: 'Sanchez', serif;
+	font-size: 16px;
+}
+
+h1, h2, h3, h4, p {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+input, textarea {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+
+/* ___________________________________________
+
+       CSS Guide
+___________________________________________ */
+
+/* 01. General Styles                        
+   02. CSS Grid                          
+/* _____________________________________
+
+   01. General Styles
+   _____________________________________ */
+
+   .hidden {
+       display: none;
+   }
+
+   .box-model {
+	   margin: 1rem;
+	   padding: 1rem;
+	   background: #000;
+   }
+
+   .nav-color {
+	background: #3E0575;
+	  /* margin: 1rem; */
+	   padding: 1rem;
+	   /* display: flex; */
+	   align-items: center;
+	   justify-content: space-between;
+   }
+
+   .margin-tb {
+	   margin: 2em 0 5em;
+   }
+
+
+
+   .border-top {
+	   border-top: 1px solid #9a2018;
+	   padding-top: 1.5em;
+	   margin: 0 1em 1em;
+   }
+
+
+
+   .mobile-padding {
+	   padding: 0 1em;
+   }
+
+   /*------- End Mobile Padding ---------*/
+
+   @supports (grid-area: auto) {
+
+	/*------------ Start Mobile ------------*/
+
+	.site {
+		max-width: 799px;
+	}
+
+	/*------------ Mobile Grid Items ------------*/
+
+	.head, .main > *, .foot {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.one-item {
+		display: grid;
+		grid-column: 1 / span 2;
+		grid-template-columns: 1fr;
+	}
+
+	.two-items {
+		display: grid;
+		grid-column: 1 / span 2;
+		grid-template-columns: repeat(2, 1fr);
+		justify-content: space-evenly;
+		row-gap: 2em;
+		column-gap: 2em;
+	}
+
+	.three-items {
+		display: grid;
+		grid-column: 1 / span 2;
+		grid-template-columns: repeat(3, 1fr);
+		justify-content: space-evenly;
+		row-gap: 2em;
+		column-gap: 2em;
+	}
+
+
+	/*------------  End Mobile Grid Items ------------*/
+
+	/*------------  Start Mobile Site header ------------*/
+
+	header {
+		position: sticky;
+		background-color: #fff;
+		top: 0px;
+	}
+
+	.logo {
+		grid-column: 1 / span 1;
+	}
+
+	.logo img {
+		height: 50px;
+	}
+
+	/*------------  End Mobile Site header ------------*/
+
+	/*------------ a. start nav show/hide mobile ------------*/
+
+	.full {
+		display: none;
+	}
+
+	.tablet {
+		/*----*/
+	}
+
+	.mobile {
+		display: grid;
+		grid-column: 2 / span 1;
+	}
+
+	/*------------ a. end nav show/hide mobile ------------*/
+
+    /*------------ b. start mobile nav overlay/menu ------------*/
+
+		 @keyframes bugfix {
+			from {
+			  padding: 0;
+			}
+			to {
+			  padding: 0;
+			}
+		  }
+		  @-webkit-keyframes bugfix {
+			from {
+			  padding: 0;
+			}
+			to {
+			  padding: 0;
+			}
+		  }
+		  #overlay-button {
+			position: absolute;
+			right: 1em;
+			padding: 26px 11px;
+			z-index: 5;
+			cursor: pointer;
+			user-select: none;
+		  }
+		  #overlay-button span {
+			height: 3px;
+			width: 25px;
+			border-radius: 2px;
+			background-color: #9a2018;
+			position: relative;
+			display: block;
+			transition: all 0.2s ease-in-out;
+		  }
+		  #overlay-button span:before {
+			top: -7px;
+			visibility: visible;
+		  }
+		  #overlay-button span:after {
+			top: 7px;
+		  }
+		  #overlay-button span:before, #overlay-button span:after {
+			height: 3px;
+			width: 25px;
+			border-radius: 2px;
+			background-color: #9a2018;
+			position: absolute;
+			content: "";
+			transition: all 0.2s ease-in-out;
+		  }
+		  #overlay-button:hover span, #overlay-button:hover span:before, #overlay-button:hover span:after {
+			background: #333332;
+		  }
+		  
+		  input[type=checkbox] {
+			display: none;
+		  }
+		  input[type=checkbox]:checked ~ #overlay {
+			visibility: visible;
+		  }
+		  input[type=checkbox]:checked ~ #overlay-button:hover span,
+		  input[type=checkbox]:checked ~ #overlay-button span {
+			background: transparent;
+		  }
+		  input[type=checkbox]:checked ~ #overlay-button span:before {
+			transform: rotate(45deg) translate(5px, 5px);
+			opacity: 1;
+		  }
+		  input[type=checkbox]:checked ~ #overlay-button span:after {
+			transform: rotate(-45deg) translate(5px, -5px);
+		  }
+		  #overlay {
+			height: 100vh;
+			width: 100vw;
+			background: #ec6451;
+			z-index: 2;
+			visibility: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			/* This fixes scrolling issue */
+			overflow: hidden;
+		  }
+		  #overlay.active {
+			visibility: visible;
+		  }
+		  #overlay ul {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			text-align: center;
+			height: 100vh;
+			padding-left: 0;
+			list-style-type: none;
+		  }
+		  #overlay ul li {
+			padding: .75em;
+		  }
+		  #overlay ul li a {
+			color: white;
+			text-decoration: none;
+			font-size: 1.25em;
+		  }
+		  #overlay ul li a:hover {
+			color: #333332;
+		  }
+
+	/*------------ End Mobile Nav ------------*/
+
+	/*------------ Start Mobile hero ------------*/
+
+	.hero {
+		margin: 0;
+	}
+
+	.hero-img img {
+		width: 100%;
+	}
+
+	.hero-img {
+		display: grid;
+		/*--*/
+		grid-column: span 2;
+		margin-bottom: 1em;
+	}
+
+	.hero-img > * {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+
+
+
+
+
+	.nav {
+		grid-column: 1 / span 2;
+		padding-top: 1.5em;
+		margin: 0;
+	}
+
+	nav ul {
+		margin: 0;
+		padding: 1em 0 1em 1em;
+		text-decoration: none;
+		text-align: start;
+	}
+
+	nav ul li {
+		display: inline;
+		margin-right: 1.25em;
+	}
+
+	nav ul li:last-child {
+		margin-right: 0em;
+	}
+
+	nav ul li a {
+		color: #626262;
+		font-size: .85em;
+	}
+
+	nav ul li a.active {
+		padding-bottom: .5em;
+		border-bottom: 3px solid #9a2018;
+	}	
+
+
+	/*------------ End Mobile Why Nav ------------*/
+
+	/*------------ Start Mobile Why Us ------------*/
+
+	.mobile-hide {
+		display: none;
+	}
+
+	/*------------ End Mobile Why Us ------------*/
+
+	/*------------ Start Mobile FAQ ------------*/
+
+	.faq {
+		background-color: #f4f4f4;
+		padding: 2em 1em 4em 1em;
+	}
+
+
+
+	.border-top-or {
+		margin: 0em 0em 1em;
+	}
+
+
+	/*------------ End Mobile FAQ ------------*/
+
+	/*------------ Start Mobile Footer ------------*/
+
+	footer {
+		background-color: #000;
+		/* background-image: url("../images/footer-mobile.jpg"); */
+		color: #fff;
+	}
+
+	footer nav a {
+		display: block;
+		font-weight: 100;
+		color: #fff;
+	}
+
+	footer h4 a {
+		padding: 1.5em 1.5em 1.4em;
+		background-color: #9a2018;
+		color: #fff;
+		font-size: 1em;
+	}
+
+	.copyright {
+		font-size: .75em;
+		text-align: center;
+	}
+
+	.footer-spacing {
+		padding: 3em 0em 3em 0em;
+	}
+
+
+	/*------------ End Mobile Footer ------------*/
+
+   /* _____________________________________
+
+   02. CSS Grid
+   _____________________________________ */
+   @media screen and (min-width: 700px) and (max-width: 1023px) {
+	/*-- Tablet Fixes --*/
+   }
+
+
+
+   @media screen and (min-width: 1024px) {
+
+		.site {
+			max-width: none;
+		}
+
+		.border-top {
+			margin: 0;
+		}
+
+		.border-top-or {
+			margin: 0;
+		}
+
+		.mobile-padding {
+			padding: 0;
+		}
+
+		input, textarea {
+			width: 448px;
+			padding: 1.5em;
+		}
+	 
+
+	   /*------- End Font Awesome -------*/
+
+		/*------------ Grid Items ------------*/
+
+		.head, .main > *, .foot {
+			display: grid;
+			grid-template-columns: 1fr repeat(2, minmax(auto, 30em)) 1fr;
+		}
+
+		.one-item {
+			display: grid;
+			grid-column: 2 / span 2;
+			grid-template-columns: 1fr;
+		}
+
+		.two-items {
+			display: grid;
+			grid-column: 2 / span 2;
+			grid-template-columns: repeat(2, 1fr);
+			justify-content: space-evenly;
+			row-gap: 2em;
+			column-gap: 2em;
+		}
+
+		.three-items {
+			display: grid;
+			grid-column: 2 / span 2;
+			grid-template-columns: repeat(3, 1fr);
+			justify-content: space-evenly;
+			row-gap: 2em;
+			column-gap: 2em;
+		}
+
+		.contact-override {
+			display: grid;
+			grid-template-columns: 1fr repeat(2, minmax(auto, 30em)) 1fr;
+			grid-column: 1 / span 4;
+			background: #f4f4f4;
+			border-bottom: 1px solid #ccc;
+		}
+
+		/*------------  End Grid Items ------------*/
+
+		/*------------ Start Site Header ------------*/
+
+		.logo img {
+			padding: 1.5em 1em 1em;
+			width: 100%;
+		}
+
+		/*------------ End Site Header ------------*/
+
+		/*------------ Start Nav Styling ------------*/
+		
+		.full {
+			display: grid;
+		}
+	
+		.tablet {
+			/*----*/
+		}
+	
+		.mobile {
+			display: none;
+		}
+
+		.nav {
+			grid-column: 2 / span 3;
+			padding-top: 1.5em;
+			margin: 0;
+		}
+
+		nav ul {
+			margin: 0;
+			padding: 0em 0em .95em;
+			text-decoration: none;
+			text-align: end;
+		}
+
+		nav ul li {
+			display: inline;
+			margin-right: 4em;
+		}
+
+		nav ul li:last-child {
+			margin-right: 0em;
+		}
+
+		nav ul li a {
+			color: #626262;
+			font-size: inherit;
+		}
+
+		nav ul li a:hover  {
+			padding-bottom: .5em;
+			border-bottom: 3px solid #9a2018;
+		}
+
+		nav ul li a.active {
+			padding-bottom: .5em;
+			border-bottom: 3px solid #9a2018;
+		}
+
+		nav ul li a h4 {
+			display: inline;
+			padding: 1.5em 1.5em 1.5em 1.5em;
+			background-color: #9a2018;
+			color: #fff;
+			font-size: 1em;
+			transition: background-color 500ms linear;
+		}
+
+		nav ul li a:hover h4 {
+			background-color: #626262;
+			transition: background-color 500ms linear;
+		}
+
+		/*------------ End Nav Styling ------------*/
+
+		/*------------ Start Hero ------------*/
+
+		.hero-img {
+			grid-column: span 4;
+		}
+
+		.hero-img h2, .hero-img h3 {
+			font-size: 1.5em;
+		}
+
+		.hero-img h2.left, .hero-img h3.left {
+			margin-left: 6em;
+		}
+
+		.hero-img h2.right, .hero-img h3.right {
+			margin-right: 6em;
+		}
+
+		.contact-item {
+			padding: 2em;
+		}
+
+		.contact-item p {
+			font-size: 1em;
+		}
+
+		/*------------ End Hero ------------*/
+
+		/*------------ Start Why ------------*/
+
+		.why {
+			margin-bottom: 3em;
+		}
+
+	
+
+		.mobile-hide {
+			display: block;
+		}
+
+		/*------------End Why ------------*/
+
+		/*------------Start FAQ ------------*/
+
+		.faq {
+			background-color: #f4f4f4;
+			padding: 4em 0 6em 0;
+		}
+
+		.faq h2 {
+			background: none;
+			padding: 1.75em 0;
+			font-size: 1.5em;
+			font-weight: 300;
+		}
+
+
+		/*------------End FAQ ------------*/
+
+		/*------------ Start Footer ------------*/
+
+		footer {
+			/* background-image: url("../images/footer.jpg"); */
+			background-color: #3E0575;
+			color: #fff;
+		}
+
+		footer nav a {
+			display: block;
+			font-weight: 100;
+			color: #fff;
+		}
+
+		footer nav a:hover {
+			color: #9a2018;
+		}
+
+		footer h4 a {
+			padding: 1.5em 1.5em 1.4em;
+			background-color: #9a2018;
+			color: #fff;
+			font-size: 1em;
+		}
+
+		footer h4 a:hover {
+			color: #fff;
+			background-color: #626262;
+			transition: background-color 500ms linear;
+		}
+
+		.copyright {
+			font-size: .75em;
+			text-align: center;
+		}
+
+		.footer-spacing {
+			padding: 3em 0em 6em 0em;
+		}
+
+		/*------------ End Footer ------------*/
+	}
+   }
